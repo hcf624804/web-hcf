@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="login_dao" class="com.huangcf.login.dao.impl.LoginDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>	
+	<bean id="login_service" parent="txProxyTemplate">  
+  <property name="target">  
+   <bean class="com.huangcf.login.service.impl.LoginServiceImpl">  
+    <property name="login_dao" ref="login_dao" />  
+   </bean>  
+  </property>  
+ </bean> 
+	<bean id="login_action" class="com.huangcf.login.action.LoginAction"
+		scope="prototype">
+		<property name="login_service" ref="login_service"></property>
+	</bean> 
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="/content" namespace="/content" extends="webhcf">
+		<action name="showContent" class="com.huangcf.content.action.ContentAction" method="showContent">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="writeContent" class="com.huangcf.content.action.ContentAction" method="writeContent">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="updateContentSum" class="com.huangcf.content.action.ContentAction" method="updateContentSum">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="queryTotalPage" class="com.huangcf.content.action.ContentAction" method="queryTotalPage">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="/advise" namespace="/advise" extends="webhcf">
+		<action name="queryAdvise" class="com.huangcf.advise.action.AdviseAction" method="queryAdvise">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+	</package>
+</struts>

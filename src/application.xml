@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           ">
+	<import resource="com/huangcf/common/commonContext.xml"/>
+	<import resource="com/huangcf/login/loginContext.xml"/>
+	<import resource="com/huangcf/main/mainContext.xml"/>
+	<import resource="com/huangcf/log/logContext.xml"/>
+	<import resource="com/huangcf/like/likeContext.xml"/>
+	<import resource="com/huangcf/dynamics/dynamicsContext.xml"/>
+	<import resource="com/huangcf/content/contentContext.xml"/>
+	<import resource="com/huangcf/message/messageContext.xml"/>
+	<import resource="com/huangcf/advise/adviseContext.xml"/>
+	<import resource="com/huangcf/mp3/mp3Context.xml"/>
+       <bean id="optLoggerBean" 
+	 	class="com.huangcf.common.OptLoggerBean">
+	 </bean>
+	 <bean id="exceptionLogger" 
+	 	class="com.huangcf.common.ExceptionLogger">
+	 </bean>
+	 <!-- <aop:config>
+		<aop:pointcut id="actionPoint" 
+			expression="within(com.huangcf.*.action..*)"/>
+		<aop:aspect id="optLoggerAspect" 
+			ref="optLoggerBean">
+			<aop:around pointcut-ref="actionPoint"
+				method="logger"/>
+		</aop:aspect>
+		
+		<aop:aspect id="exceptionAspect" 
+				ref="exceptionLogger">
+			<aop:after-throwing 
+				pointcut-ref="actionPoint"
+				method="logger"
+				throwing="e"/>
+		</aop:aspect>
+	</aop:config> -->
+</beans>
