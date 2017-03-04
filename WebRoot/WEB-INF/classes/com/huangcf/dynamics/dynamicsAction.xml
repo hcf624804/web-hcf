@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="/dynamics" namespace="/dynamics" extends="webhcf">
+		<action name="showDynamics" class="com.huangcf.dynamics.action.DynamicsAction" method="showDynamics">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="writeDynamics" class="com.huangcf.dynamics.action.DynamicsAction" method="writeDynamics">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="queryTotalPage" class="com.huangcf.dynamics.action.DynamicsAction" method="queryTotalPage">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="toWriteArticle" class="com.huangcf.dynamics.action.DynamicsAction" method="toWriteArticle">
+			<result name="success">
+				/WEB-INF/article/writeArticle.jsp
+			</result>
+		</action>
+		<action name="writeArticle" class="com.huangcf.dynamics.action.DynamicsAction" method="writeArticle">
+			<result type="redirectAction" name="success">  
+			    <param name="actionName">/toShowMain</param>  
+			    <param name="namespace">/main</param>  
+			</result> 
+		</action>
+		<action name="toShowAbout" class="com.huangcf.dynamics.action.DynamicsAction" method="toShowAbout">
+			<result name="success">
+				/WEB-INF/article/showArticle.jsp
+			</result>
+		</action>
+		<action name="showArticle" class="com.huangcf.dynamics.action.DynamicsAction" method="toShowArticle">
+			<result name="success">
+				/WEB-INF/article/showArticle.jsp
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+    <struts>
+    	<package name="webhcf" extends="json-default">
+    		<interceptors>
+    			<interceptor name="loginInter" class="com.huangcf.interceptor.LoginTnterceptor"></interceptor>
+    			<interceptor name="openSession" class="com.huangcf.interceptor.OpenSessionInViewIntercept"></interceptor>
+    			<interceptor-stack name="loginStack">
+    				<interceptor-ref name="loginInter"></interceptor-ref>
+    				<interceptor-ref name="openSession"></interceptor-ref>
+    				<interceptor-ref name="defaultStack"></interceptor-ref>
+    			</interceptor-stack>
+    		</interceptors>
+    		<default-interceptor-ref name="loginStack"></default-interceptor-ref>
+    		<!-- 定义全局的result,这里定义的result在当前package下所有action共用 -->
+    		<global-results>
+    			<result name="login" type="redirectAction">
+    				<!-- 跨包访问action -->
+    				<param name="namespace">/login</param>
+    				<param name="actionName">/toLogin</param>
+    			</result>
+    			<result name="error">
+    				/WEB-INF/common/404.jsp
+    			</result>
+    		</global-results>
+    	</package>
+    </struts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="dynamics_dao" class="com.huangcf.dynamics.dao.impl.DynamicsDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>	
+	<bean id="dynamics_service" parent="txProxyTemplate">  
+  <property name="target">  
+   <bean class="com.huangcf.dynamics.service.impl.DynamicsServiceImpl">   
+    <property name="dynamics_dao" ref="dynamics_dao" />
+    <property name="content_dao" ref="content_dao" />
+    <property name="like_dao" ref="like_dao" />
+    <property name="login_dao" ref="login_dao" />
+   </bean>  
+  </property>  
+ </bean> 
+	<bean id="dynamics_action" class="com.huangcf.dynamics.action.DynamicsAction"
+		scope="prototype">
+		<property name="dynamics_service" ref="dynamics_service"></property>
+	</bean> 
+</beans>

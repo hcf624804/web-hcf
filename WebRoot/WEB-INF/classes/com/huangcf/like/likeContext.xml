@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="like_dao" class="com.huangcf.like.dao.impl.LikeDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>		
+	<bean id="like_service" parent="txProxyTemplate">  
+  <property name="target">  
+   <bean class="com.huangcf.like.service.impl.LikeServiceImpl">  
+    <property name="like_dao" ref="like_dao" />  
+   </bean>  
+  </property>  
+ </bean> 
+	<bean id="like_action" class="com.huangcf.like.action.LikeAction"
+		scope="prototype">
+		<property name="like_service" ref="like_service"></property>
+	</bean> 
+</beans>

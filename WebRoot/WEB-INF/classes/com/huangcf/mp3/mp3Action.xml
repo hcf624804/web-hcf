@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="/mp3" namespace="/mp3" extends="webhcf">
+		<action name="queryMp3" class="com.huangcf.mp3.action.Mp3Action" method="doQueryMp3">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+	</package>
+</struts>

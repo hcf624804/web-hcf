@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="message_dao" class="com.huangcf.message.dao.impl.MessageDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>		
+	<bean id="message_service" parent="txProxyTemplate">  
+  <property name="target">  
+   <bean class="com.huangcf.message.service.impl.MessageServiceImpl">  
+    <property name="message_dao" ref="message_dao" />  
+   </bean>  
+  </property>  
+ </bean> 
+	<bean id="message_action" class="com.huangcf.message.action.MessageAction"
+		scope="prototype">
+		<property name="message_service" ref="message_service"></property>
+	</bean> 
+</beans>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="/login" namespace="/login" extends="json-default">
+		<action name="doLogin" class="com.huangcf.login.action.LoginAction" method="doLogin">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="toLogin" class="com.huangcf.login.action.LoginAction" method="toLogin">
+			<result name="success">
+				/WEB-INF/login/login.jsp
+			</result>
+		</action>
+		<action name="logout" class="com.huangcf.login.action.LoginAction" method="doLogout">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="showUser" class="com.huangcf.login.action.LoginAction" method="showUser">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="doEnroll" class="com.huangcf.login.action.LoginAction" method="doEnroll">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="checkLoginname" class="com.huangcf.login.action.LoginAction" method="checkLoginname">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="visitorLogin" class="com.huangcf.login.action.LoginAction" method="visitorLogin">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+		<action name="queryVisitorSum" class="com.huangcf.login.action.LoginAction" method="queryVisitorSum">
+			<result type="json">
+				<param name="root">jsonData</param> 
+			</result>
+		</action>
+	</package>
+</struts>

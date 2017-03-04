@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="log_dao" class="com.huangcf.log.dao.impl.LogDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>		
+	<bean id="log_service" parent="txProxyTemplate">  
+  <property name="target">  
+   <bean class="com.huangcf.log.service.impl.LogServiceImpl">  
+    <property name="log_dao" ref="log_dao" />  
+   </bean>  
+  </property>  
+ </bean> 
+	<bean id="log_action" class="com.huangcf.log.action.LogAction"
+		scope="prototype">
+		<property name="log_service" ref="log_service"></property>
+	</bean> 
+</beans>

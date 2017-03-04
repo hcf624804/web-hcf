@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="advise_dao" class="com.huangcf.advise.dao.impl.AdviseDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>	
+	<bean id="advise_service" parent="txProxyTemplate">  
+  <property name="target">  
+   <bean class="com.huangcf.advise.service.impl.AdviseServiceImpl">  
+    <property name="advise_dao" ref="advise_dao" />
+   </bean>  
+  </property>  
+ </bean> 
+	<bean id="advise_action" class="com.huangcf.advise.action.AdviseAction"
+		scope="prototype">
+		<property name="advise_service" ref="advise_service"></property>
+	</bean> 
+</beans>
